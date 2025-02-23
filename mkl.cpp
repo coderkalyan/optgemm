@@ -14,9 +14,9 @@ int main(void) {
     std::mt19937 rng(dev());
     std::uniform_real_distribution<f32> dist(0.0f, 100.0f);
 
-    constexpr std::size_t N = 1024;
-    constexpr std::size_t M = 1024;
-    constexpr std::size_t K = 1024;
+    constexpr std::size_t N = 512;
+    constexpr std::size_t M = 512;
+    constexpr std::size_t K = 512;
 
     std::vector<f32> A(N * M), B(M * K), C(N * K);
     const auto seed = dist(rng);

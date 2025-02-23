@@ -1,5 +1,5 @@
 MKLROOT = /opt/intel/oneapi/mkl/latest
-CPPFLAGS = -std=c++17 -O3 -march=native -DMKL_ILP64 -m64 -I"${MKLROOT}/include"
+CPPFLAGS = -std=c++17 -O3 -march=native -DMKL_ILP64 -m64 -I"${MKLROOT}/include" -fopenmp=libomp
 LDFLAGS = -Wl,--start-group ${MKLROOT}/lib/libmkl_intel_ilp64.a ${MKLROOT}/lib/libmkl_gnu_thread.a ${MKLROOT}/lib/libmkl_core.a -Wl,--end-group -lgomp -lpthread -lm -ldl
 
 mkl: mkl.cpp
