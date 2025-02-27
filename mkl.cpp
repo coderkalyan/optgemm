@@ -14,9 +14,9 @@ int main(void) {
     std::mt19937 rng(dev());
     std::uniform_real_distribution<f32> dist(0.0f, 100.0f);
 
-    constexpr std::size_t N = 512;
-    constexpr std::size_t M = 512;
-    constexpr std::size_t K = 512;
+    constexpr std::size_t N = 2048;
+    constexpr std::size_t M = 2048;
+    constexpr std::size_t K = 2048;
 
     std::vector<f32> A(N * M), B(M * K), C(N * K);
     const auto seed = dist(rng);
@@ -31,11 +31,11 @@ int main(void) {
         const auto stop = chrono::high_resolution_clock::now();
 
         const auto duration =
-            chrono::duration_cast<chrono::microseconds>(stop - start);
-        printf("iteration %d: %ld us\n", i + 1, duration.count());
+            chrono::duration_cast<chrono::milliseconds>(stop - start);
+        printf("iteration %d: %ld ms\n", i + 1, duration.count());
 
         min = std::min(min, duration.count());
     }
 
-    printf("best: %ld us\n", min);
+    printf("best: %ld ms\n", min);
 }
